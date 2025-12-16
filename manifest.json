@@ -1,6 +1,6 @@
 {
   "name": "Игра в пары",
-  "short_name": "Пары",
+  "short_name": "Memory",
   "description": "Запоминай и находи совпадающие карточки",
   "start_url": "/",
   "scope": "/",
