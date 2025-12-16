@@ -1,24 +1,17 @@
-const CACHE_NAME = "memory-pwa-v1";
-const urlsToCache = [
-  "/",
-  "/index.html",
-  "css/style.css",
-  "js/main.js",
-  "/manifest.json",
-  "/icon-192.png",
-  "/icon-512.png"
-];
+// sw.js — минимальный, стабильный Service Worker
+const CACHE_NAME = 'memory-pwa-v1';
 
-self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache))
-  );
+self.addEventListener('install', (event) => {
+  console.log('SW installed');
+  self.skipWaiting(); // активирует SW сразу
 });
 
-self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
-    })
-  );
+self.addEventListener('activate', (event) => {
+  console.log('SW activated');
+  event.waitUntil(self.clients.claim()); // захватывает все вкладки
 });
+
+// Необязательно: перехватывать fetch
+// self.addEventListener('fetch', (event) => {
+//   event.respondWith(fetch(event.request));
+// });
