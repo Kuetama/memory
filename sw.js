@@ -1,10 +1,10 @@
 const CACHE_NAME = 'memory-pwa-v1';
 const urlsToCache = [
-  '/memory/',
-  '/memory/index.html',
-  '/memory/manifest.json',
-  '/memory/icon-192.png',
-  '/memory/icon-512.png',
+  '/',
+  '/index.html',
+  '/manifest.json',
+  '/icon-192.png',
+  '/icon-512.png'
   // Добавьте сюда другие статичные ресурсы, если они есть (CSS, JS и т.д.)
 ];
 
