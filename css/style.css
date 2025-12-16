@@ -1,10 +1,12 @@
 html {
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-  background: #000;
+  background: #181818;
+  min-height: 100vh;
+  margin: 0;
 }
 
 *,
@@ -63,40 +65,47 @@ button {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
-
+  padding: 0 10px;
 }
 
 .game {
   display: flex;
-  margin: auto;
+  margin: 0 auto 20px auto;
   flex-wrap: wrap;
   justify-content: center;
   gap: 32px;
+  max-width: 1000px;
 }
 
 .card {
+  padding-bottom: 10px;
   display: flex;
   color: transparent;
-  background-color: #FF6600;
+  background-color: #ff6600;
   font-size: 150px;
   font-weight: 600;
-  border-radius: 30px;
-  width: 230px;
-  height: 230px;
+  border-radius: 20px;
+  width: calc((100% - 150px) / 4);
+  max-width: 150px;
+  height: auto;
+  min-height: 200px;
+  max-height: 200px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 50px;
   transition: 0.3s ease-in-out;
   cursor: pointer;
-  box-shadow: 0px 0px 26px -5px rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.8);
   transform: scaleX(-1);
 }
 
 .card.open {
-  background-color: #FFCC99;
-  color: #FF6600;
+  display: flex;
+  justify-content: center;
+  background-color: #dadedf;
+  color: #ff6600;
   transition: 0.6s;
   transform-style: preserve-3d;
   position: relative;
@@ -105,8 +114,15 @@ button {
 }
 
 .card.success {
-  background: #CCFF99;
-  color: #66CC66;
+  background: linear-gradient(
+    to bottom,
+    #191919 0%,
+    #2a1a3a 30%,
+    #38167a 60%,
+    #4517b7 100%
+  );
+
+  color: #bfbfc1;
 }
 
 .level {
@@ -122,11 +138,11 @@ button {
   margin-bottom: 30px;
 }
 
-@media (max-width:999px) {
+@media (max-width: 999px) {
   .container {
     max-width: 740px;
-  }}
-
+  }
+}
 
 .timer {
   display: flex;
@@ -136,7 +152,7 @@ button {
 }
 
 .timers {
-  background-color: #66CC66;
+  background-color: #66cc66;
   font-size: 20px;
   width: fit-content;
   text-align: center;
@@ -180,8 +196,19 @@ button {
 }
 
 .glow-on-hover:before {
-  content: '';
-  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
   position: absolute;
   top: -2px;
   left: -2px;
@@ -192,12 +219,12 @@ button {
   height: calc(100% + 4px);
   animation: glowing 20s linear infinite;
   opacity: 0;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
   border-radius: 10px;
 }
 
 .glow-on-hover:active {
-  color: #000
+  color: #000;
 }
 
 .glow-on-hover:active:after {
@@ -210,7 +237,7 @@ button {
 
 .glow-on-hover:after {
   z-index: -1;
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   height: 100%;
@@ -233,7 +260,6 @@ button {
     background-position: 0 0;
   }
 }
-
 
 .btn {
   text-decoration: none;
@@ -262,7 +288,12 @@ button {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(146, 148, 248, 0.4),transparent);
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(146, 148, 248, 0.4),
+    transparent
+  );
   transition: all 650ms;
 }
 
@@ -270,14 +301,13 @@ button {
   left: 100%;
 }
 
-
-
 @media (max-width: 999px) {
   .card {
-    width: 150px;
-    height: 150px;
-    border-radius: 20px;
+    width: calc((100% - 30px) / 4);
+    min-height: 150px;
+    border-radius: 10px;
     font-size: 100px;
+    gap: 20px;
   }
 
   .level-select {
@@ -289,7 +319,7 @@ button {
     padding-top: 20px;
     font-size: 20px;
   }
-  .glow-on-hover{
+  .glow-on-hover {
     margin-bottom: 10px;
   }
 
@@ -299,30 +329,24 @@ button {
   }
 }
 
-
 @media (max-width: 696px) {
   .card {
-    width: 40px;
-    height: 40px;
     border-radius: 10px;
-    font-size: 30px;
+    font-size: 50px;
+    gap: 10px;
   }
-  
+
+  .card.open {
+    padding-bottom: 5px;
+  }
 
   .game {
-    max-width: 500px;
-    gap: 20px;
+    gap: 10px;
+    justify-content: space-between;
   }
 
   .glow-on-hover {
     width: 150px;
     height: 30px;
-  }
-}
-
-
-@media (max-width: 424px) {
-  .game {
-    max-width: 350px;
   }
 }
