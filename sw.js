@@ -1,12 +1,12 @@
-const CACHE_NAME = 'memory-pwa-v1';
+const CACHE_NAME = "memory-pwa-v1";
 const urlsToCache = [
-  '/',
-  '/index.html',
- '/css/style.css',
-  '/js/main.js',
-  '/manifest.json',
-  '/icon-192.png',
-  '/icon-512.png'
+  "/",
+  "/index.html",
+  "/main.css",
+  "/main.js",
+  "/manifest.json",
+  "/icon-192.png",
+  "/icon-512.png",
 ];
 
 self.addEventListener("install", (event) => {
